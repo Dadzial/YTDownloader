@@ -1,0 +1,5 @@
+[project]
+name = "YTDownloader"
+
+[tool.pyside6-project]
+files = ["Downloader.py", "icons/app_icon.png", "main.py", "main.qml"]
