@@ -39,6 +39,7 @@ ApplicationWindow {
 
     ColumnLayout {
         anchors.fill: parent
+<<<<<<< HEAD
         anchors.leftMargin: 10
         anchors.rightMargin: 10
         anchors.bottomMargin: 10
@@ -52,6 +53,182 @@ ApplicationWindow {
             font.pointSize: 14
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
+=======
+        anchors.margins: 10
+        spacing: 10
+
+        Label {
+            text: "Paste link here"
+            font.pointSize: 12
+            font.bold: true
+            Layout.alignment: Qt.AlignHCenter
+        }
+
+        TextField {
+            id: urlField
+            Layout.fillWidth: true
+            height: 40
+            placeholderText: "..."
+            font.pointSize: 14
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            background: Rectangle {
+                color: "#1E1E1E"
+                radius: 5
+            }
+        }
+
+        RowLayout {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            spacing: 10
+
+            Rectangle {
+                id: formatChoose
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                color: "#1E1E1E"
+                radius: 5
+
+                property string selectedFormat: "mp4"
+
+                Label {
+                    text: "Choose format"
+                    font.pointSize: 11
+                    font.bold: true
+                    anchors.left: parent.left
+                    anchors.top: parent.top
+                    anchors.leftMargin: 10
+                    anchors.topMargin: 10
+                    color: "white"
+                }
+                Row {
+                    id: radioRow
+                    spacing: 20
+                    anchors.top: parent.top
+                    anchors.topMargin: 40
+                    anchors.left: parent.left
+                    anchors.leftMargin: 10
+
+                    RadioButton {
+                        id: mp4Button
+                        text: "mp4"
+                        checked: true
+                        onCheckedChanged: if (checked) formatChoose.selectedFormat = "mp4"
+
+                        indicator: Rectangle {
+                            width: 16
+                            height: 16
+                            radius: 8
+                            border.color: "white"
+                            border.width: 2
+                            color: parent.checked ? "red" : "white"
+                        }
+                    }
+                    RadioButton {
+                        id: mp3Button
+                        text: "mp3"
+                        onCheckedChanged: if (checked) formatChoose.selectedFormat = "mp3"
+
+                        indicator: Rectangle {
+                            width: 16
+                            height: 16
+                            radius: 8
+                            border.color: "white"
+                            border.width: 2
+                            color: parent.checked ? "red" : "white"
+                        }
+                    }
+                    RadioButton {
+                        id: webmButton
+                        text: "webm"
+                        onCheckedChanged: if (checked) formatChoose.selectedFormat = "webm"
+
+                        indicator: Rectangle {
+                            width: 16
+                            height: 16
+                            radius: 8
+                            border.color: "white"
+                            border.width: 2
+                            color: parent.checked ? "red" : "white"
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                id: localizationChoose
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                color: "#1E1E1E"
+                radius: 5
+                property string selectedpath: ""
+
+
+                Label {
+                    text: "Choose localization"
+                    font.pointSize: 11
+                    font.bold: true
+                    anchors.left: parent.left
+                    anchors.top: parent.top
+                    anchors.leftMargin: 10
+                    anchors.topMargin: 10
+                    color: "white"
+                }
+
+                Button {
+                    id: chooseButton
+                    font.pointSize: 10
+                    font.bold: true
+                    background: Rectangle {
+                        color: "red"
+                        radius: 5
+                    }
+                    text: "Browse..."
+                    anchors.left: parent.left
+                    anchors.leftMargin: 10
+                    anchors.top: parent.top
+                    anchors.topMargin: 40
+                    onClicked: {
+                        var folder = downloader.choose_folder()
+                        if(folder !== "") {
+                            chosenPath.text = folder
+                            localizationChoose.selectedpath = folder
+                        }
+                    }
+                }
+
+                Label {
+                    id: chosenPath
+                    text: "No folder selected"
+                    color: "white"
+                    anchors.left: parent.left
+                    anchors.top: chooseButton.bottom
+                    anchors.leftMargin: 10
+                    anchors.topMargin: 10
+                    elide: Text.ElideRight
+                    width: parent.width - 20
+                }
+            }
+        }
+        Button {
+            id: downloadButton
+            text: "Download"
+            Layout.alignment: Qt.AlignHCenter
+            anchors.topMargin: 15
+            width: 100
+            height: 30
+            font.pointSize: 12
+            font.bold: true
+            background: Rectangle {
+                color: "red"
+                radius: 5
+            }
+            onClicked: {
+                statusLabel.text = "Downloading..."
+                downloader.download(urlField.text,formatChoose.selectedFormat,localizationChoose.selectedpath)
+            }
+>>>>>>> 8080e82 (end of project)
         }
 
         Text {
@@ -61,6 +238,7 @@ ApplicationWindow {
             Layout.alignment: Qt.AlignHCenter
         }
 
+<<<<<<< HEAD
         Button {
             id: downloadButton
             text: "Download"
@@ -83,8 +261,18 @@ ApplicationWindow {
         Connections {
             target: downloader
             onFinished: function(msg) {
+=======
+        Connections {
+            target: downloader
+            function onFinished(msg) {
+>>>>>>> 8080e82 (end of project)
                 statusLabel.text = msg
             }
         }
     }
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 8080e82 (end of project)
