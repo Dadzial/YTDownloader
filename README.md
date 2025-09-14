@@ -29,7 +29,3 @@ YTDownloader is a simple YouTube video downloader written in Python using **PySi
 ```bash
 git clone https://github.com/your_username/YTDownloader.git
 cd YTDownloader
-<<<<<<< HEAD
-=======
->>>>>>> 215b07c (start again without venv)
->>>>>>> 8080e82 (end of project)
