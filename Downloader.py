@@ -44,7 +44,11 @@ class Downloader(QObject):
                 "preferredcodec": "mp3",
                 "preferredquality": "192"
         }]
+<<<<<<< HEAD
 >>>>>>> 8080e82 (end of project)
+=======
+
+>>>>>>> 46b44e9 (end of project)
         try:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
