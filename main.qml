@@ -10,7 +10,6 @@ ApplicationWindow {
     title: qsTr("YTDownloader")
     color: "#232323"
 
-
     header: ToolBar {
         height: 45
         background: Rectangle { color: "#1E1E1E" }
@@ -39,21 +38,6 @@ ApplicationWindow {
 
     ColumnLayout {
         anchors.fill: parent
-<<<<<<< HEAD
-        anchors.leftMargin: 10
-        anchors.rightMargin: 10
-        anchors.bottomMargin: 10
-        spacing: 1
-
-        TextField {
-            id: urlField
-            placeholderText: "Paste link here"
-            Layout.fillWidth: true
-            height: 40
-            font.pointSize: 14
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-=======
         anchors.margins: 10
         spacing: 10
 
@@ -102,6 +86,7 @@ ApplicationWindow {
                     anchors.topMargin: 10
                     color: "white"
                 }
+
                 Row {
                     id: radioRow
                     spacing: 20
@@ -162,8 +147,7 @@ ApplicationWindow {
                 Layout.fillHeight: true
                 color: "#1E1E1E"
                 radius: 5
-                property string selectedpath: ""
-
+                property string selectedPath: ""
 
                 Label {
                     text: "Choose localization"
@@ -193,7 +177,7 @@ ApplicationWindow {
                         var folder = downloader.choose_folder()
                         if(folder !== "") {
                             chosenPath.text = folder
-                            localizationChoose.selectedpath = folder
+                            localizationChoose.selectedPath = folder
                         }
                     }
                 }
@@ -211,6 +195,7 @@ ApplicationWindow {
                 }
             }
         }
+
         Button {
             id: downloadButton
             text: "Download"
@@ -226,9 +211,8 @@ ApplicationWindow {
             }
             onClicked: {
                 statusLabel.text = "Downloading..."
-                downloader.download(urlField.text,formatChoose.selectedFormat,localizationChoose.selectedpath)
+                downloader.download(urlField.text, formatChoose.selectedFormat, localizationChoose.selectedPath)
             }
->>>>>>> 8080e82 (end of project)
         }
 
         Text {
@@ -238,41 +222,11 @@ ApplicationWindow {
             Layout.alignment: Qt.AlignHCenter
         }
 
-<<<<<<< HEAD
-        Button {
-            id: downloadButton
-            text: "Download"
-            Layout.alignment: Qt.AlignHCenter
-            width: 100
-            height: 30
-            font.pointSize: 12
-            font.bold: true
-            background: Rectangle {
-                color: "red"
-                radius: 5
-            }
-
-            onClicked: {
-                statusLabel.text = "Downloading..."
-                downloader.download(urlField.text)
-            }
-        }
-
         Connections {
             target: downloader
             onFinished: function(msg) {
-=======
-        Connections {
-            target: downloader
-            function onFinished(msg) {
->>>>>>> 8080e82 (end of project)
                 statusLabel.text = msg
             }
         }
     }
 }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 8080e82 (end of project)
